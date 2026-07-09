@@ -121,14 +121,14 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
   <sub>Riconoscimento veicolo · semaforo INTERVENIRE · DTC prioritizzati · guida intervento · telemetria HV · stampa referto</sub>
 </p>
 
-### Vista banco officina — landscape
+### Dettaglio guasti e telemetria
 
 <p align="center">
-  <img src="assets/screenshots/dashboard-officina.png" alt="Sentinel BOX vista widescreen banco officina con guasti e telemetria" width="720" />
+  <img src="assets/screenshots/dettaglio-guasti.png" alt="Dettaglio codici guasto DTC e telemetria live Sentinel BOX" width="360" />
 </p>
 
 <p align="center">
-  <sub>Layout ottimizzato per display orizzontale: stessa sessione diagnostica con più spazio per codici e parametri vitali</sub>
+  <sub>Codici prioritizzati con severità · storico visite · guida intervento · parametri vitali in tempo reale</sub>
 </p>
 
 ### Referto PDF per il cliente
