@@ -6,10 +6,4 @@
 | `kiosk-ok.png` | Kiosk con esito positivo |
 | `referto-pdf.png` | Anteprima referto PDF |
 
-Per rigenerare le anteprime da mockup:
-
-```bash
-python scripts/generate_assets.py
-```
-
-Sostituisci i PNG con foto reali dal Raspberry Pi quando disponibili (stessi nomi file).
+Sostituisci i PNG con screenshot reali dal Raspberry Pi quando disponibili (stessi nomi file).
