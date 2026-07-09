@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Sentinel BOX" width="100%" />
+  <img src="assets/hero-banner.png" alt="Sentinel BOX" width="100%" />
 </p>
 
 <p align="center">

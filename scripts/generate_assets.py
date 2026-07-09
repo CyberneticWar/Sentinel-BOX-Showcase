@@ -117,7 +117,7 @@ def generate_banner() -> None:
     # Card decorativa soft a destra
     draw.rounded_rectangle((872, 96, 1208, 296), radius=20, outline=(56, 189, 248, 80), width=2)
 
-    out = ASSETS / "banner.png"
+    out = ASSETS / "hero-banner.png"
     img.convert("RGB").save(out, "PNG", optimize=True)
     print(f"Wrote {out}")
 
