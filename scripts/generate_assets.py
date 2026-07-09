@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
@@ -48,28 +48,77 @@ def _rounded(draw: ImageDraw.ImageDraw, xy: tuple[int, int, int, int], r: int, f
     draw.rounded_rectangle(xy, radius=r, fill=fill)
 
 
+def _pill(
+    draw: ImageDraw.ImageDraw,
+    xy: tuple[int, int, int, int],
+    label: str,
+    fill: tuple[int, int, int],
+    text_color: tuple[int, int, int] = TEXT,
+) -> None:
+    draw.rounded_rectangle(xy, radius=(xy[3] - xy[1]) // 2, fill=fill)
+    font = _font(15, bold=True)
+    bbox = draw.textbbox((0, 0), label, font=font)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    x0, y0, x1, y1 = xy
+    draw.text((x0 + (x1 - x0 - tw) // 2, y0 + (y1 - y0 - th) // 2 - 1), label, font=font, fill=text_color)
+
+
 def generate_banner() -> None:
-    w, h = 1200, 320
-    img = _gradient((w, h))
+    w, h = 1280, 360
+    img = _gradient((w, h)).convert("RGBA")
     draw = ImageDraw.Draw(img)
+
+    # Sottile griglia decorativa
+    for x in range(0, w, 48):
+        draw.line([(x, 0), (x, h)], fill=(51, 65, 85, 28))
+    for y in range(0, h, 48):
+        draw.line([(0, y), (w, y)], fill=(51, 65, 85, 28))
+
+    # Barra accento inferiore
+    draw.rectangle((0, h - 4, w, h), fill=ACCENT)
+
+    # Glow dietro emblem
+    glow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    gdraw = ImageDraw.Draw(glow)
+    gdraw.ellipse((52, 92, 188, 228), fill=(56, 189, 248, 55))
+    glow = glow.filter(ImageFilter.GaussianBlur(18))
+    img = Image.alpha_composite(img, glow)
+    draw = ImageDraw.Draw(img)
+
     emblem_path = ASSETS / "brand" / "sentinel-emblem.png"
     if emblem_path.exists():
         emblem = Image.open(emblem_path).convert("RGBA")
-        emblem = emblem.resize((72, 82), Image.Resampling.LANCZOS)
-        img.paste(emblem, (80, 110), emblem)
+        emblem = emblem.resize((96, 110), Image.Resampling.LANCZOS)
+        img.paste(emblem, (72, 118), emblem)
+        draw = ImageDraw.Draw(img)
 
-    title = _font(42, bold=True)
-    sub = _font(22)
-    draw.text((180, 108), "SENTINEL BOX", font=title, fill=TEXT)
-    draw.text((180, 162), "Predici i Problemi, Previeni i Guasti", font=sub, fill=ACCENT)
-    draw.text((180, 210), "Diagnostica OBD · Machine Learning · Kiosk Raspberry Pi", font=_font(18), fill=MUTED)
+    # Titolo e payoff
+    draw.text((200, 108), "SENTINEL BOX", font=_font(48, bold=True), fill=TEXT)
+    draw.line((200, 168, 520, 168), fill=ACCENT, width=3)
+    draw.text((200, 186), "Predici i Problemi, Previeni i Guasti", font=_font(24), fill=ACCENT)
+    draw.text(
+        (200, 234),
+        "Diagnostica OBD  ·  Machine Learning  ·  Kiosk Raspberry Pi",
+        font=_font(17),
+        fill=MUTED,
+    )
 
-    _rounded(draw, (860, 120, 1120, 200), 12, (30, 58, 95))
-    draw.text((890, 142), "Per officine", font=_font(20, bold=True), fill=TEXT)
-    draw.text((890, 172), "Kiosk touch · Deploy Pi", font=_font(16), fill=MUTED)
+    # Feature pills a destra — stile coerente con i badge del README
+    pill_y = 128
+    pills = [
+        ("OBD-II / UDS", (14, 116, 144)),
+        ("ML Predittivo", (34, 197, 94)),
+        ("Kiosk Touch", (168, 85, 247)),
+    ]
+    for label, color in pills:
+        _pill(draw, (900, pill_y, 1180, pill_y + 44), label, color)
+        pill_y += 58
+
+    # Card decorativa soft a destra
+    draw.rounded_rectangle((872, 96, 1208, 296), radius=20, outline=(56, 189, 248, 80), width=2)
 
     out = ASSETS / "banner.png"
-    img.save(out, "PNG", optimize=True)
+    img.convert("RGB").save(out, "PNG", optimize=True)
     print(f"Wrote {out}")
 
 
