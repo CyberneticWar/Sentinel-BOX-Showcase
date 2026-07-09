@@ -11,11 +11,7 @@
   <img src="https://img.shields.io/badge/Automotive-Diagnostics-0ea5e9?style=for-the-badge" alt="Automotive Diagnostics" />
   <img src="https://img.shields.io/badge/IoT-Raspberry%20Pi%205-a855f7?style=for-the-badge" alt="Raspberry Pi" />
   <img src="https://img.shields.io/badge/ML-Predictive%20Maintenance-22c55e?style=for-the-badge" alt="Machine Learning" />
-  <img src="https://img.shields.io/badge/Codice-Proprietario%20%7C%20Privato-64748b?style=for-the-badge" alt="Proprietary" />
-</p>
-
-<p align="center">
-  <em>Repository pubblico solo per presentazione (portfolio / CV). Non contiene codice sorgente.</em>
+  <img src="https://img.shields.io/badge/Officine-B2B%20Ready-f59e0b?style=for-the-badge" alt="Officine B2B" />
 </p>
 
 ---
@@ -145,7 +141,7 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
   <sub>Referto stampabile con esito scansione, predizioni e QR passaporto veicolo</sub>
 </p>
 
-> Le immagini sopra sono **anteprime rappresentative** dell'interfaccia. Screenshot da dispositivo reale verranno aggiornati periodicamente.
+> Anteprime dell'interfaccia kiosk e del referto PDF in ambiente officina.
 
 ---
 
@@ -204,7 +200,7 @@ flowchart TB
 | Kiosk Raspberry Pi (portrait 720×1280) | Deploy in produzione |
 | Modelli ML predittivi | Integrati |
 | Referto PDF + QR passaporto | Operativo |
-| Codice sorgente | Repository privato (proprietario) |
+| Passaporto digitale veicolo | Operativo |
 
 ---
 
@@ -213,10 +209,9 @@ flowchart TB
 </p>
 
 <p align="center">
-  <strong>Sentinel BOX</strong> — full-stack IoT + ML per l'automotive aftermarket<br />
-  <em>Codice sorgente disponibile su richiesta in contesto professionale</em>
+  <strong>Sentinel BOX</strong> — manutenzione predittiva e diagnostica intelligente per l'automotive aftermarket
 </p>
 
 <p align="center">
-  <sub>© Sentinel BOX — Tutti i diritti riservati. Materiale descrittivo; vietata riproduzione del software senza autorizzazione.</sub>
+  <sub>© Sentinel BOX — Tutti i diritti riservati.</sub>
 </p>

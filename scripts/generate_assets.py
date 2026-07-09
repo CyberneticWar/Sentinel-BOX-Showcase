@@ -65,8 +65,8 @@ def generate_banner() -> None:
     draw.text((180, 210), "Diagnostica OBD · Machine Learning · Kiosk Raspberry Pi", font=_font(18), fill=MUTED)
 
     _rounded(draw, (860, 120, 1120, 200), 12, (30, 58, 95))
-    draw.text((890, 142), "Portfolio", font=_font(20, bold=True), fill=TEXT)
-    draw.text((890, 172), "Nessun codice sorgente", font=_font(16), fill=MUTED)
+    draw.text((890, 142), "Per officine", font=_font(20, bold=True), fill=TEXT)
+    draw.text((890, 172), "Kiosk touch · Deploy Pi", font=_font(16), fill=MUTED)
 
     out = ASSETS / "banner.png"
     img.save(out, "PNG", optimize=True)
