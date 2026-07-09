@@ -1,116 +1,222 @@
-# Sentinel BOX — Showcase
+<p align="center">
+  <img src="assets/banner.png" alt="Sentinel BOX" width="100%" />
+</p>
 
-> **Predici i Problemi, Previeni i Guasti.**
+<p align="center">
+  <strong>Piattaforma di diagnostica e manutenzione predittiva per officine automotive</strong><br />
+  OBD-II · Machine Learning · Kiosk touch su Raspberry Pi
+</p>
 
-Repository **pubblico solo per presentazione** (CV, portfolio, demo commerciale).  
-**Non contiene codice sorgente** del prodotto — il software è proprietario e sviluppato in repository privato.
+<p align="center">
+  <img src="https://img.shields.io/badge/Automotive-Diagnostics-0ea5e9?style=for-the-badge" alt="Automotive Diagnostics" />
+  <img src="https://img.shields.io/badge/IoT-Raspberry%20Pi%205-a855f7?style=for-the-badge" alt="Raspberry Pi" />
+  <img src="https://img.shields.io/badge/ML-Predictive%20Maintenance-22c55e?style=for-the-badge" alt="Machine Learning" />
+  <img src="https://img.shields.io/badge/Codice-Proprietario%20%7C%20Privato-64748b?style=for-the-badge" alt="Proprietary" />
+</p>
 
----
-
-## Cos'è Sentinel BOX
-
-**Sentinel BOX** è una piattaforma di diagnostica e manutenzione predittiva pensata per **officine indipendenti** e **reti concessionarie**. Collega il veicolo alla presa OBD, legge centraline (OBD-II + UDS), applica modelli di machine learning e restituisce un referto chiaro per il meccanico e per il cliente.
-
-Il cuore dell'esperienza in officina è la **modalità kiosk** su **Raspberry Pi** con touchscreen: schermata unica, semaforo di stato, codici guasto leggibili a distanza, telemetria live e stampa referto PDF.
-
----
-
-## Problema
-
-- Strumenti diagnostici spesso costosi, complessi o poco adatti al banco officina.
-- Dati OBD grezzi difficili da interpretare per chi deve lavorare sotto pressione.
-- Mancanza di un flusso unificato: diagnosi → priorità → referto per il cliente.
-
-## Soluzione
-
-| Area | Cosa fa Sentinel BOX |
-|------|----------------------|
-| **Riconoscimento** | Identificazione automatica veicolo (VIN, marca/modello, alimentazione) |
-| **Diagnosi** | Scansione multi-ECU, codici guasto, parametri vitali |
-| **Predizione** | Modelli ML su batteria, tagliando, anomalie sensori |
-| **Officina** | Kiosk touch full-screen, guida intervento sui DTC |
-| **Cliente** | Referto PDF con QR, passaporto salute veicolo |
+<p align="center">
+  <em>Repository pubblico solo per presentazione (portfolio / CV). Non contiene codice sorgente.</em>
+</p>
 
 ---
 
-## Architettura (overview)
+## Indice
 
-```mermaid
-flowchart TB
-  subgraph Edge["Banco officina"]
-    Pi["Raspberry Pi 5 + Touch Display"]
-    OBD["Adattatore ELM327 / OBD"]
-  end
+- [Panoramica](#panoramica)
+- [Il problema](#il-problema)
+- [La soluzione](#la-soluzione)
+- [Flusso in officina](#flusso-in-officina)
+- [Schermate prodotto](#schermate-prodotto)
+- [Architettura](#architettura)
+- [Stack tecnologico](#stack-tecnologico)
+- [Casi d'uso](#casi-duso)
+- [Stato del progetto](#stato-del-progetto)
 
-  subgraph Stack["Sentinel BOX"]
-    L5["Frontend — Kiosk & dashboard"]
-    L4["API REST + WebSocket"]
-    L3["ML — predizioni"]
-    L2["Dati — PostgreSQL, Redis"]
-    L1["Core OBD — lettura live"]
-  end
+---
 
-  OBD --> L1
-  Pi --> L5
-  L5 --> L4 --> L3 --> L2 --> L1
+## Panoramica
+
+**Sentinel BOX** collega il veicolo alla presa OBD, legge le centraline (OBD-II e UDS), applica modelli di machine learning e produce un referto chiaro per il **meccanico** e per il **cliente finale**.
+
+L'esperienza in officina è pensata per il banco lavoro: **schermata unica**, testi grandi, semaforo di stato immediato, fino a tre codici guasto in evidenza, telemetria live e stampa referto PDF con QR per il passaporto salute del veicolo.
+
+| Target | Beneficio |
+|--------|-----------|
+| **Officina indipendente** | Diagnosi rapida senza strumenti da migliaia di euro |
+| **Rete concessionaria** | Referto standardizzato su tutte le sedi |
+| **Cliente finale** | Spiegazione comprensibile, non solo codici grezzi |
+
+---
+
+## Il problema
+
+Gli strumenti diagnostici professionali sono spesso **costosi**, **complessi** o pensati per il tecnico esperto, non per il ritmo dell'officina quotidiana.
+
+| Pain point | Impatto |
+|------------|---------|
+| Dati OBD grezzi | Il meccanico perde tempo a interpretare codici e parametri |
+| Strumenti frammentati | Diagnosi, referto e comunicazione al cliente su sistemi diversi |
+| Poca predittività | Si interviene al guasto, non prima |
+
+---
+
+## La soluzione
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Riconoscimento veicolo
+Identificazione automatica tramite VIN: marca, modello, alimentazione e contesto diagnostico.
+
+### Diagnosi multi-ECU
+Scansione codici guasto (DTC), parametri vitali e stato centraline in tempo reale.
+
+### Predizione ML
+Modelli su batteria, tagliando e anomalie sensori per anticipare gli interventi.
+
+</td>
+<td width="50%" valign="top">
+
+### Kiosk officina
+Interfaccia touch full-screen su Raspberry Pi, ottimizzata per display portrait 720×1280.
+
+### Guida intervento
+Priorità guasti, severità e suggerimenti operativi direttamente sul banco.
+
+### Referto cliente
+PDF professionale con QR verso il passaporto digitale del veicolo.
+
+</td>
+</tr>
+</table>
+
+---
+
+## Flusso in officina
+
+```
+  Collegamento OBD          Scansione & ML           Esito kiosk              Referto PDF
+        │                        │                       │                        │
+        ▼                        ▼                       ▼                        ▼
+   ┌─────────┐            ┌───────────┐           ┌───────────┐           ┌───────────┐
+   │ Veicolo │  ────────▶ │ Sentinel  │ ────────▶ │ Semaforo  │ ────────▶ │ Cliente & │
+   │  + Pi   │            │   BOX     │           │ + DTC +   │           │ officina  │
+   └─────────┘            └───────────┘           │ telemetria│           └───────────┘
+                                                   └───────────┘
 ```
 
-**Stack tecnologico:** Python (FastAPI), Next.js / React, PostgreSQL, Redis, modelli ML (scikit-learn), deploy Docker su Raspberry Pi.
+1. Il meccanico collega l'adattatore OBD e avvia la scansione dal kiosk.
+2. Il sistema identifica il veicolo e analizza centraline e parametri.
+3. I modelli ML arricchiscono l'esito con predizioni manutentive.
+4. Il kiosk mostra priorità e telemetria; con un tap si stampa il referto.
 
 ---
 
 ## Schermate prodotto
 
-> Aggiungi qui gli screenshot reali del Pi o della dashboard.  
-> File consigliati in `assets/screenshots/` (vedi README nella cartella).
+### Kiosk — diagnosi con codici guasto
 
-### Kiosk officina — stato veicolo e guasti
+<p align="center">
+  <img src="assets/screenshots/kiosk-diagnosi.png" alt="Kiosk Sentinel BOX con diagnosi veicolo e codici guasto" width="320" />
+</p>
 
-![Kiosk officina — diagnosi veicolo](assets/screenshots/kiosk-diagnosi.svg)
-
-*Schermata kiosk: veicolo identificato, barra stato, codici guasto, telemetria e azioni stampa/uscita.*  
-*Sostituisci `kiosk-diagnosi.svg` con `kiosk-diagnosi.png` quando hai lo screenshot reale.*
+<p align="center">
+  <sub>Veicolo identificato · barra di stato · DTC prioritizzati · telemetria live · stampa referto</sub>
+</p>
 
 ### Kiosk — veicolo in salute
 
-![Kiosk — tutto OK](assets/screenshots/kiosk-ok.svg)
+<p align="center">
+  <img src="assets/screenshots/kiosk-ok.png" alt="Kiosk Sentinel BOX esito positivo veicolo in salute" width="320" />
+</p>
 
-*Esito positivo dopo scansione: messaggio chiaro per officina e cliente.*
+<p align="center">
+  <sub>Esito positivo chiaro per officina e cliente · parametri vitali in verde</sub>
+</p>
 
-### Dashboard / referto (opzionale)
+### Referto PDF
 
-![Dashboard o anteprima referto](assets/screenshots/referto-pdf.svg)
+<p align="center">
+  <img src="assets/screenshots/referto-pdf.png" alt="Anteprima referto PDF Sentinel BOX" width="560" />
+</p>
 
-*Anteprima referto PDF o vista gestionale (se disponibile).*
+<p align="center">
+  <sub>Referto stampabile con esito scansione, predizioni e QR passaporto veicolo</sub>
+</p>
+
+> Le immagini sopra sono **anteprime rappresentative** dell'interfaccia. Screenshot da dispositivo reale verranno aggiornati periodicamente.
+
+---
+
+## Architettura
+
+```mermaid
+flowchart TB
+  subgraph edge [Banco officina]
+    pi[Raspberry Pi 5 + Touch]
+    obd[Adattatore OBD]
+  end
+
+  subgraph stack [Sentinel BOX]
+    l5[Frontend - Kiosk e dashboard]
+    l4[API REST + WebSocket]
+    l3[ML - Predizioni]
+    l2[Dati - PostgreSQL e Redis]
+    l1[Core OBD - Lettura live]
+  end
+
+  obd --> l1
+  pi --> l5
+  l5 --> l4 --> l3 --> l2 --> l1
+```
+
+---
+
+## Stack tecnologico
+
+| Layer | Tecnologie |
+|-------|------------|
+| **Edge** | Raspberry Pi 5, display touch, Docker |
+| **Frontend** | Next.js, React, UI kiosk dedicata |
+| **Backend** | Python, FastAPI, WebSocket |
+| **Dati** | PostgreSQL, Redis |
+| **ML** | scikit-learn, modelli predittivi integrati |
+| **Diagnostica** | OBD-II, UDS, ELM327 |
 
 ---
 
 ## Casi d'uso
 
-1. **Officina indipendente** — tablet o Pi al banco: il meccanico vede subito cosa controllare.
-2. **Rete multi-sede** — stesso flusso diagnostico e referto standardizzato.
-3. **Ibrido / EV** — lettura parametri HV oltre alla diagnostica classica 12V.
+| Scenario | Come aiuta Sentinel BOX |
+|----------|-------------------------|
+| **Officina di quartiere** | Pi o tablet al banco: diagnosi immediata e referto per il cliente |
+| **Multi-sede** | Stesso flusso e stesso referto su tutte le officine della rete |
+| **Ibrido / EV** | Lettura parametri HV oltre alla diagnostica tradizionale 12V |
 
 ---
 
-## Stato progetto
+## Stato del progetto
 
 | Componente | Stato |
 |------------|--------|
-| Core OBD + API | ✅ Operativo |
-| Kiosk Pi portrait (720×1280) | ✅ Deploy produzione su Raspberry Pi |
-| Modelli ML predittivi | ✅ Integrati |
-| Referto PDF + QR | ✅ |
-| Repository codice | 🔒 Privato (proprietario) |
+| Core OBD + API REST | Operativo |
+| Kiosk Raspberry Pi (portrait 720×1280) | Deploy in produzione |
+| Modelli ML predittivi | Integrati |
+| Referto PDF + QR passaporto | Operativo |
+| Codice sorgente | Repository privato (proprietario) |
 
 ---
 
-## Contatto / CV
+<p align="center">
+  <img src="assets/brand/sentinel-emblem.png" alt="Sentinel BOX" width="48" />
+</p>
 
-**Progetto:** Sentinel BOX — full-stack IoT + ML per automotive aftermarket  
-**Ruolo:** [inserisci il tuo ruolo — es. Product & software development]  
-**Repository codice:** non pubblico (su richiesta in colloquio)
+<p align="center">
+  <strong>Sentinel BOX</strong> — full-stack IoT + ML per l'automotive aftermarket<br />
+  <em>Codice sorgente disponibile su richiesta in contesto professionale</em>
+</p>
 
----
-
-*© Sentinel BOX — tutti i diritti riservati. Questo repository contiene solo materiale descrittivo e screenshot; è vietata la riproduzione del software senza autorizzazione.*
+<p align="center">
+  <sub>© Sentinel BOX — Tutti i diritti riservati. Materiale descrittivo; vietata riproduzione del software senza autorizzazione.</sub>
+</p>

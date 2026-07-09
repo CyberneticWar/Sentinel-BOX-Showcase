@@ -1,19 +1,15 @@
-# Screenshot per il showcase
+# Screenshot prodotto
 
-Inserisci in questa cartella **foto o export PNG** del prodotto reale (Raspberry Pi o browser).
+| File | Descrizione |
+|------|-------------|
+| `kiosk-diagnosi.png` | Kiosk con veicolo collegato e codici guasto |
+| `kiosk-ok.png` | Kiosk con esito positivo |
+| `referto-pdf.png` | Anteprima referto PDF |
 
-## File consigliati
+Per rigenerare le anteprime da mockup:
 
-| File | Contenuto |
-|------|-----------|
-| `kiosk-diagnosi.png` | Kiosk con veicolo collegato e almeno un codice guasto |
-| `kiosk-ok.png` | Kiosk con esito “Veicolo in salute” |
-| `referto-pdf.png` | Anteprima referto PDF o schermata stampa |
-| `dashboard.png` | (Opzionale) Vista dashboard officina su desktop |
+```bash
+python scripts/generate_assets.py
+```
 
-## Come catturarli
-
-1. Sul **Pi**: screenshot dal display o foto ben illuminata del touchscreen.
-2. In **locale**: avvia il frontend, apri `/` in modalità kiosk, screenshot browser (F12 → device toolbar 720×1280).
-
-Dopo aver aggiunto i file, il `README.md` principale li mostrerà automaticamente su GitHub.
+Sostituisci i PNG con foto reali dal Raspberry Pi quando disponibili (stessi nomi file).
