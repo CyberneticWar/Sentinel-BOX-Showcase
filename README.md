@@ -111,37 +111,37 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
 
 ## Schermate prodotto
 
-### Kiosk — diagnosi con codici guasto
+### Kiosk touch — portrait (Raspberry Pi)
 
 <p align="center">
-  <img src="assets/screenshots/kiosk-diagnosi.png" alt="Kiosk Sentinel BOX con diagnosi veicolo e codici guasto" width="320" />
+  <img src="assets/screenshots/kiosk-diagnosi.png" alt="Kiosk Sentinel BOX — Toyota Prius in diagnosi con codici guasto e telemetria live" width="320" />
 </p>
 
 <p align="center">
-  <sub>Veicolo identificato · barra di stato · DTC prioritizzati · telemetria live · stampa referto</sub>
+  <sub>Riconoscimento veicolo · semaforo INTERVENIRE · DTC prioritizzati · guida intervento · telemetria HV · stampa referto</sub>
 </p>
 
-### Kiosk — veicolo in salute
+### Vista banco officina — landscape
 
 <p align="center">
-  <img src="assets/screenshots/kiosk-ok.png" alt="Kiosk Sentinel BOX esito positivo veicolo in salute" width="320" />
-</p>
-
-<p align="center">
-  <sub>Esito positivo chiaro per officina e cliente · parametri vitali in verde</sub>
-</p>
-
-### Referto PDF
-
-<p align="center">
-  <img src="assets/screenshots/referto-pdf.png" alt="Anteprima referto PDF Sentinel BOX" width="560" />
+  <img src="assets/screenshots/dashboard-officina.png" alt="Sentinel BOX vista widescreen banco officina con guasti e telemetria" width="720" />
 </p>
 
 <p align="center">
-  <sub>Referto stampabile con esito scansione, predizioni e QR passaporto veicolo</sub>
+  <sub>Layout ottimizzato per display orizzontale: stessa sessione diagnostica con più spazio per codici e parametri vitali</sub>
 </p>
 
-> Anteprime dell'interfaccia kiosk e del referto PDF in ambiente officina.
+### Referto PDF per il cliente
+
+<p align="center">
+  <img src="assets/screenshots/referto-pdf.png" alt="Referto PDF Sentinel BOX con predizioni ML, DTC e QR verifica" width="560" />
+</p>
+
+<p align="center">
+  <sub>Referto stampabile: esito critico, predizioni machine learning, codici guasto, letture OBD e QR verifica diagnosi</sub>
+</p>
+
+> Screenshot catturati dal Raspberry Pi 5 in produzione (simulatore OBD demo, Toyota Prius 2021 ibrida).
 
 ---
 

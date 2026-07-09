@@ -2,8 +2,6 @@
 
 | File | Descrizione |
 |------|-------------|
-| `kiosk-diagnosi.png` | Kiosk con veicolo collegato e codici guasto |
-| `kiosk-ok.png` | Kiosk con esito positivo |
-| `referto-pdf.png` | Anteprima referto PDF |
-
-Sostituisci i PNG con screenshot reali dal Raspberry Pi quando disponibili (stessi nomi file).
+| `kiosk-diagnosi.png` | Kiosk portrait 720×1280 — diagnosi live da Raspberry Pi |
+| `dashboard-officina.png` | Vista landscape banco officina |
+| `referto-pdf.png` | Prima pagina referto PDF diagnosi |
