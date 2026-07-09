@@ -66,19 +66,20 @@ flowchart TB
 
 ### Kiosk officina — stato veicolo e guasti
 
-![Kiosk officina — diagnosi veicolo](assets/screenshots/kiosk-diagnosi.png)
+![Kiosk officina — diagnosi veicolo](assets/screenshots/kiosk-diagnosi.svg)
 
-*Schermata kiosk: veicolo identificato, barra stato, codici guasto, telemetria e azioni stampa/uscita.*
+*Schermata kiosk: veicolo identificato, barra stato, codici guasto, telemetria e azioni stampa/uscita.*  
+*Sostituisci `kiosk-diagnosi.svg` con `kiosk-diagnosi.png` quando hai lo screenshot reale.*
 
 ### Kiosk — veicolo in salute
 
-![Kiosk — tutto OK](assets/screenshots/kiosk-ok.png)
+![Kiosk — tutto OK](assets/screenshots/kiosk-ok.svg)
 
 *Esito positivo dopo scansione: messaggio chiaro per officina e cliente.*
 
 ### Dashboard / referto (opzionale)
 
-![Dashboard o anteprima referto](assets/screenshots/referto-pdf.png)
+![Dashboard o anteprima referto](assets/screenshots/referto-pdf.svg)
 
 *Anteprima referto PDF o vista gestionale (se disponibile).*
 
