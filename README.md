@@ -124,7 +124,7 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
 ### Catalogo guasti — knowledge base
 
 <p align="center">
-  <img src="assets/screenshots/catalogo-guasti.png" alt="Catalogo guasti Sentinel BOX con oltre 140 codici DTC documentati" width="400" />
+  <img src="assets/screenshots/catalogo-guasti.png" alt="Catalogo guasti Sentinel BOX con oltre 140 codici DTC documentati" width="480" />
 </p>
 
 <p align="center">
@@ -157,25 +157,13 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
 
 ## Architettura
 
-```mermaid
-flowchart TB
-  subgraph edge [Banco officina]
-    pi[Raspberry Pi 5 + Touch]
-    obd[Adattatore OBD]
-  end
+<p align="center">
+  <img src="assets/architecture.svg" alt="Schema architettura Sentinel BOX — veicolo OBD, stack software, Raspberry Pi kiosk" width="100%" />
+</p>
 
-  subgraph stack [Sentinel BOX]
-    l5[Frontend - Kiosk e dashboard]
-    l4[API REST + WebSocket]
-    l3[ML - Predizioni]
-    l2[Dati - PostgreSQL e Redis]
-    l1[Core OBD - Lettura live]
-  end
-
-  obd --> l1
-  pi --> l5
-  l5 --> l4 --> l3 --> l2 --> l1
-```
+<p align="center">
+  <sub>Edge computing in officina: lettura OBD live, API e ML on-premise sul Pi, interfaccia touch per il meccanico</sub>
+</p>
 
 ---
 
