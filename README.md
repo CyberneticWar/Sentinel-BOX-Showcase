@@ -158,7 +158,7 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
 ## Architettura
 
 <p align="center">
-  <img src="assets/architecture.svg" alt="Schema architettura Sentinel BOX — veicolo OBD, stack software, Raspberry Pi kiosk" width="100%" />
+  <img src="assets/architecture.png" alt="Schema architettura Sentinel BOX — veicolo OBD, stack software, Raspberry Pi kiosk" width="100%" />
 </p>
 
 <p align="center">
