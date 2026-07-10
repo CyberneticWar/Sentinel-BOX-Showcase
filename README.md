@@ -124,11 +124,21 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
 ### Catalogo guasti — knowledge base
 
 <p align="center">
-  <img src="assets/screenshots/catalogo-guasti.png" alt="Catalogo guasti Sentinel BOX con oltre 140 codici DTC documentati" width="720" />
+  <img src="assets/screenshots/catalogo-guasti.png" alt="Catalogo guasti Sentinel BOX con oltre 140 codici DTC documentati" width="400" />
 </p>
 
 <p align="center">
-  <sub>Knowledge base integrata: codici OBD documentati con severità, sistema e guida intervento · ricerca full-text</sub>
+  <sub>Knowledge base integrata: codici OBD documentati con severità, sistema e ricerca full-text · 144+ codici noti</sub>
+</p>
+
+### Guida intervento — procedura passo-passo
+
+<p align="center">
+  <img src="assets/screenshots/guida-intervento.png" alt="Guida riparazione Sentinel BOX — procedura per codice P0A94 convertitore DC/DC" width="400" />
+</p>
+
+<p align="center">
+  <sub>Tap su un guasto dal kiosk: cause probabili, procedura consigliata, ricambi tipici e avvisi HV per ibrido/elettrico</sub>
 </p>
 
 ### Referto PDF per il cliente
