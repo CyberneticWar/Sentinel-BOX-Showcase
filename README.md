@@ -114,27 +114,27 @@ PDF professionale con QR verso il passaporto digitale del veicolo.
 ### Kiosk touch — portrait (Raspberry Pi)
 
 <p align="center">
-  <img src="assets/screenshots/kiosk-diagnosi.png" alt="Kiosk Sentinel BOX — Toyota Prius in diagnosi con codici guasto e telemetria live" width="320" />
+  <img src="assets/screenshots/kiosk-diagnosi.png" alt="Kiosk Sentinel BOX — Toyota Prius in diagnosi con codici guasto e telemetria live" width="400" />
 </p>
 
 <p align="center">
   <sub>Riconoscimento veicolo · semaforo INTERVENIRE · DTC prioritizzati · guida intervento · telemetria HV · stampa referto</sub>
 </p>
 
-### Dettaglio guasti e telemetria
+### Catalogo guasti — knowledge base
 
 <p align="center">
-  <img src="assets/screenshots/dettaglio-guasti.png" alt="Dettaglio codici guasto DTC e telemetria live Sentinel BOX" width="360" />
+  <img src="assets/screenshots/catalogo-guasti.png" alt="Catalogo guasti Sentinel BOX con oltre 140 codici DTC documentati" width="720" />
 </p>
 
 <p align="center">
-  <sub>Codici prioritizzati con severità · storico visite · guida intervento · parametri vitali in tempo reale</sub>
+  <sub>Knowledge base integrata: codici OBD documentati con severità, sistema e guida intervento · ricerca full-text</sub>
 </p>
 
 ### Referto PDF per il cliente
 
 <p align="center">
-  <img src="assets/screenshots/referto-pdf.png" alt="Referto PDF Sentinel BOX con predizioni ML, DTC e QR verifica" width="560" />
+  <img src="assets/screenshots/referto-pdf.png" alt="Referto PDF Sentinel BOX con predizioni ML, DTC e QR verifica" width="720" />
 </p>
 
 <p align="center">

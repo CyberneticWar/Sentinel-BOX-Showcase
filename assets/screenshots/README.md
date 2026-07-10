@@ -1,7 +1,7 @@
 # Screenshot prodotto
 
-| File | Descrizione |
-|------|-------------|
-| `kiosk-diagnosi.png` | Kiosk portrait 720×1280 — diagnosi live da Raspberry Pi |
-| `dettaglio-guasti.png` | Dettaglio DTC e telemetria (crop dal kiosk) |
-| `referto-pdf.png` | Prima pagina referto PDF diagnosi |
+| File | Risoluzione | Descrizione |
+|------|-------------|-------------|
+| `kiosk-diagnosi.png` | 2160×3840 (3×) | Kiosk portrait con barra programma |
+| `catalogo-guasti.png` | 3840×full page | Catalogo knowledge base DTC |
+| `referto-pdf.png` | 4× render | Prima pagina referto PDF |
